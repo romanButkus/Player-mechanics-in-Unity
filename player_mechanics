@@ -1,0 +1,22 @@
+using TMPro;
+using UnityEngine;
+
+public class PlayerMove : MonoBehaviour
+{
+    [SerializeField] private float _speed = 10f;
+    [SerializeField] private TextMeshProUGUI _counterText;
+    [SerializeField] private float _counter;
+    [SerializeField] private float _composition;
+
+    private void FixedUpdate()
+    {
+        AutoRun();
+    }
+
+    private void AutoRun()
+    {
+        transform.position += Vector3.forward * _speed * Time.deltaTime;
+        _counter = (int)transform.position.z * _composition;
+        _counterText.text = ((int)_counter).ToString();
+    }
+}
